@@ -1,0 +1,20 @@
+{
+  "name": "ai-tools-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "aiToolDesc.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.19.2",
+    "path": "^0.12.7",
+    "puppeteer": "^22.12.1"
+  }
+}
