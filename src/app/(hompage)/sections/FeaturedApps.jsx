@@ -55,48 +55,6 @@ const FeaturedApps = () => {
     <div>
       <div class="h-screen flex flex-col pb-6">
         <div class="h-full flex flex-col justify-center">
-          <div class="-mt-20 max-w-4xl w-full text-center mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-blue-500 font-serif text-6xl">lifestail</h1>
-
-            <p class="mt-3 text-gray-600 dark:text-neutral-400">
-              search ai tools
-            </p>
-          </div>
-
-          <div class="mt-10 max-w-2xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative">
-              <input
-                type="text"
-                placeholder=""
-                value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
-                class="border p-4 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-              />
-              <div class="absolute top-1/2 end-2 -translate-y-1/2">
-                <button
-                  onClick={fetchAiTools}
-                  type="button"
-                  class="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:text-gray-800 bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-white dark:bg-neutral-800"
-                >
-                  <svg
-                    data-testid="geist-icon"
-                    height="16"
-                    stroke-linejoin="round"
-                    viewBox="0 0 16 16"
-                    width="16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M1.5 6.5C1.5 3.73858 3.73858 1.5 6.5 1.5C9.26142 1.5 11.5 3.73858 11.5 6.5C11.5 9.26142 9.26142 11.5 6.5 11.5C3.73858 11.5 1.5 9.26142 1.5 6.5ZM6.5 0C2.91015 0 0 2.91015 0 6.5C0 10.0899 2.91015 13 6.5 13C8.02469 13 9.42677 12.475 10.5353 11.596L13.9697 15.0303L14.5 15.5607L15.5607 14.5L15.0303 13.9697L11.596 10.5353C12.475 9.42677 13 8.02469 13 6.5C13 2.91015 10.0899 0 6.5 0Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
           <div class="container grid grid-cols-4 gap-2 mt-12">
             {tools.map((tool) => (
               <a href={tool.url} target="_blank" rel="noreferrer">
