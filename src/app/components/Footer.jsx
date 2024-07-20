@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import { cn } from "../../lib/utils";
 // Footer social contact
 import email from "../../../assets/email.icon.png";
 import instagram from "../../../assets/instagram.png";
@@ -11,10 +11,11 @@ import x from "../../../assets/x.png";
 // Footer App Logo
 import logo1 from "../../../assets/appwhite_space_logo.png";
 import logo2 from "../../../assets/lifestai-logo.png";
+import { inter } from "../layout";
 
 const Footer = () => {
   return (
-    <footer className="h-[100px] bg-gradient-to-b items-center flex justify-between from-[#000000] to-[#2B2B2B] p-20 text-white">
+    <footer className="h-fit bg-gradient-to-b items-center flex justify-between from-[#000000] to-[#2B2B2B] py-5 px-20 text-white">
       <div className="flex justify-between items-center gap-4">
         <div className="h-[68px] w-[68px] bg-[#000000] rounded-full grid items-center justify-center">
           <Image
@@ -28,7 +29,12 @@ const Footer = () => {
         <Image />
       </div>
       <div className="flex justify-between items-center max-w-[498px] gap-4">
-        <p className="font-[400] text-md leading-[24.5px] text-gray-400">
+        <p
+          className={cn(
+            "font-[400] text-md leading-[24.5px] text-gray-400",
+            inter.className
+          )}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco
@@ -42,23 +48,22 @@ const Footer = () => {
             className="cursor-pointer object-contain"
             width={34}
             height={34}
-            onResize={"contain"}
             src={instagram}
           />
           <Image
-            className="cursor-pointer"
+            className="cursor-pointer object-contain"
             width={34}
             height={34}
             src={email}
           />
           <Image
-            className="cursor-pointer"
+            className="cursor-pointer object-contain"
             width={34}
             height={34}
             src={tiktok}
           />
           <Image
-            className="cursor-pointer"
+            className="cursor-pointer object-contain"
             width={34}
             height={34}
             src={linkedin}

@@ -11,21 +11,17 @@ import logo from "./../../../assets/lifestai-logo.png";
 import google from "./../../../assets/google.png";
 import linkedin from "./../../../assets/linkedin.png";
 import email from "./../../../assets/email.png";
+import { IconButton } from "../../components/ui/icon-button";
+import { usePathname } from "next/navigation";
 
-const IconButton = ({ src, label }) => {
-  return (
-    <div className="flex cursor-pointer justify-between rounded-[25px] items-center bg-gradient-to-b border-2 p-2 border-color-[#020321] from-[#253579] to-[#0D1336] ">
-      <Image width={20} height={20} src={src} />
-      <p className="text-white text-[16px] ml-2 font-[600]">{label}</p>
-    </div>
-  );
-};
 const Navbar = () => {
   const [loginModal, setLoginModal] = useState(false);
   const openLoginModal = () => {
     console.log("first");
     setLoginModal(true);
   };
+
+  const pathname = usePathname();
   const closeLoginModal = () => {
     console.log("first");
     setLoginModal(false);
@@ -33,7 +29,7 @@ const Navbar = () => {
 
   return (
     <header className="h-[">
-      <div className="flex max-w-[1920px] px-20 text-white justify-between items-center bg-gradient-to-b h-[90px] from-[#000000] to-[#5271FF]">
+      <div className="lg:fixed left-0 top-0 right-0 flex max-w-[1920px] px-20 text-white justify-between items-center bg-gradient-to-b h-[90px] from-[#000000] to-[#5271FF]">
         {" "}
         <div>
           <Link href="/">
@@ -43,31 +39,75 @@ const Navbar = () => {
         <nav>
           <ul className="flex gap-6 items-center justify-between">
             <Link href="/">
-              <p>Home</p>
+              <p
+                className={`${
+                  pathname == "/" &&
+                  "text-[#000115]  text-[20px] font-[400] leading-[24.5px]"
+                }`}
+              >
+                Home
+              </p>
             </Link>
             <Link href="/ai-news">
-              <p>Ai News</p>
+              <p
+                className={`${
+                  pathname == "/ai-news" &&
+                  "text-[#000115]  text-[20px] font-[400] leading-[24.5px]"
+                }`}
+              >
+                Ai News
+              </p>
             </Link>
             <Link href="/categories">
-              <p>Categories</p>
+              <p
+                className={`${
+                  pathname == "/categories" &&
+                  "text-[#000115]  text-[20px] font-[400] leading-[24.5px]"
+                }`}
+              >
+                Categories
+              </p>
             </Link>
             <Link href="/comparison-tool">
-              <p>Comparison Tool</p>
+              <p
+                className={`${
+                  pathname == "/comparison-tool" &&
+                  "text-[#000115]  text-[20px] font-[400] leading-[24.5px]"
+                }`}
+              >
+                Comparison Tool
+              </p>
             </Link>
             <Link href="/invite-a-friend">
-              <p>Invite a friend</p>
+              <p
+                className={`${
+                  pathname == "/invite-a-friend" &&
+                  "text-[#000115]  text-[20px] font-[400] leading-[24.5px]"
+                }`}
+              >
+                Invite a friend
+              </p>
             </Link>
           </ul>
         </nav>
-        <div>
-          <button
+        <div className="flex gap-5 items-center justify-between cursor-pointer">
+          <p
             onClick={openLoginModal}
             type="button"
-            class="text-white  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+            class="text-white  font-[400] leading-[24.5px] "
           >
             Login
-          </button>
-          <Link href={"/sign-up"}>Sign Up</Link>
+          </p>
+          <Link href={"/sign-up"}>
+            <p
+              className={`${
+                pathname == "/sign-up" &&
+                "text-[#000115]  text-[20px] font-[400] leading-[24.5px]"
+              }`}
+            >
+              Sign up
+            </p>
+          </Link>
         </div>
         {loginModal && (
           <div class=" overflow-y-auto flex bg-[#000000]/80 overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -164,7 +204,7 @@ const Navbar = () => {
                     <div className="flex items-center justify-center">
                       <button
                         type="submit"
-                        className="w-fit text-white  bg-gradient-to-b p-2 rounded-[25px] from-[#253579] to-[#4462DF]"
+                        className=" text-white w-full bg-gradient-to-b p-2 rounded-[25px] from-[#253579] to-[#4462DF]"
                       >
                         Login
                       </button>

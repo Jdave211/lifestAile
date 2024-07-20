@@ -2,7 +2,29 @@ import React from "react";
 
 import logo2 from "../../../../assets/lifestai-logo.png";
 import Image from "next/image";
+import { cn } from "../../../lib/utils";
+import { inter } from "../../layout";
 // General Hero section of the homepage
+
+const TestimonalCard = ({ author, testimony }) => {
+  return (
+    <div className="bg-gradient-to-b items-center col-span-1 flex flex-col justify-center from-[#5271FF]/50 p-3 to-[#314499]/25 rounded-[40px] min-h-[200px] max-w-[400px]">
+      <p
+        className={cn(
+          '"text-[24px] font-[24px] text-white font-400 tracking-wide leading-8 mb-5"',
+          inter.className
+        )}
+      >
+        {testimony}
+      </p>
+
+      <p className="text-right text-md leading-[24.19px] font-[24px] text-white font-400 tracking-wide">
+        - {author}
+      </p>
+    </div>
+  );
+};
+
 const Hero = () => {
   return (
     <section className="min-h-screen grid  items-center grid-cols-2 mx-auto bg-gradient-to-r from-[#000116] to-[#020031]   justify-center gap-2">
@@ -26,34 +48,25 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        <div className="bg-gradient-to-b items-center col-span-1 flex flex-col justify-center from-[#5271FF]/50 p-3 to-[#314499]/25 rounded-[40px] min-h-[200px] max-w-[400px]">
-          <p className="text-[24px] leading-[24.19px] font-[24px] text-white font-400 tracking-wide">
-            “Never found an easier website to find and discover ai tools”
-          </p>
+      <div className="grid grid-cols-2 pt-20 gap-5">
+        <TestimonalCard
+          testimony="  “Never found an easier website to find and discover ai tools”"
+          author="Williams"
+        />
+        <TestimonalCard
+          testimony="  “Never found an easier website to find and discover ai tools”"
+          author="Dave"
+        />
 
-          <p className="text-right text-[24px] leading-[24.19px] font-[24px] text-white font-400 tracking-wide">
-            - John Doe
-          </p>
-        </div>
-        <div className="bg-gradient-to-b col-span-3 items-center flex flex-col justify-center from-[#5271FF]/50 p-3 to-[#314499]/25 rounded-[40px] min-h-[200px] max-w-[400px]">
-          <p className="text-[24px] leading-[24.19px] font-[24px] text-white font-400 tracking-wide">
-            “Never found an easier website to find and discover ai tools”
-          </p>
+        <TestimonalCard
+          testimony="  “Never found an easier website to find and discover ai tools”"
+          author="Kim"
+        />
 
-          <p className="text-right text-[24px] leading-[24.19px] font-[24px] text-white font-400 tracking-wide">
-            - John Doe
-          </p>
-        </div>
-        <div className="bg-gradient-to-b col-span-4 items-center flex flex-col justify-center from-[#5271FF]/50 px-3 py-2 to-[#314499]/25 rounded-[40px] min-h-[200px] max-w-[400px]">
-          <p className="text-[24px] leading-[20px] font-[15px] text-gray-400 font-400 tracking-wide">
-            “Never found an easier website to find and discover ai tools”
-          </p>
-
-          <p className="text-right text-[24px] leading-[24.19px] font-[24px] text-white font-400 tracking-wide">
-            - John Doe
-          </p>
-        </div>
+        <TestimonalCard
+          testimony="  “Never found an easier website to find and discover ai tools”"
+          author="Sarah"
+        />
       </div>
     </section>
   );
