@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync } from 'fs';
   const page = await browser.newPage();
   const toolsData = JSON.parse(readFileSync('ai-tools-scrap-data.json', 'utf-8'));
   const allData = [];
-  let errorCount = 0; 
+  let errorCount = 0;
 
   const navigateToPage = async (url) => {
     try {
@@ -20,22 +20,22 @@ import { readFileSync, writeFileSync } from 'fs';
 
   try {
     for (let i = 0; i < toolsData.length; i++) {
-      const { name: toolName, cardUrl, price, rating } = toolsData[i]; 
+      const { name: toolName, cardUrl, price, rating, category, subcategory, imgUrl, cardDesc } = toolsData[i];
       const pageLoaded = await navigateToPage(cardUrl);
       if (!pageLoaded) {
         console.log(`Skipping ${toolName} due to loading issues.`);
         continue;
       }
       try {
-        const data = await page.evaluate((toolName, price, rating) => {
+        const data = await page.evaluate((toolName, price, rating, category, subcategory, imgUrl, cardDesc) => {
           const name = toolName;
           const descElement = document.querySelector('.tools-rich-text');
           const desc = descElement ? descElement.textContent.trim().replace(/\n/g, '') : '';
           const links = Array.from(document.querySelectorAll('.cms-link'));
           const correctLink = links.find(link => link.textContent.includes('Visit Tool') || link.getAttribute('data-role') === 'primary-link');
           const toolUrl = correctLink ? correctLink.href : null;
-          return { name, desc, toolUrl, price, rating };
-        }, toolName, price, rating);
+          return { name, desc, toolUrl, price, rating, category, subcategory, imgUrl, cardDesc };
+        }, toolName, price, rating, category, subcategory, imgUrl, cardDesc);
 
         if (data.toolUrl) {
           allData.push(data);
@@ -44,7 +44,7 @@ import { readFileSync, writeFileSync } from 'fs';
           console.log(`Skipping ${toolName} due to missing URL.`);
         }
       } catch (error) {
-        console.error(`Error finding necessary elements on ${toolName} page: ${errorCount++}`, error); 
+        console.error(`Error finding necessary elements on ${toolName} page: ${errorCount++}`, error);
         continue;
       }
     }
